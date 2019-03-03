@@ -1,11 +1,12 @@
 package com.bs.musicapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -14,29 +15,21 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setNavigationTitle("首页");
-       /* EditText myEditText = (EditText) findViewById(R.id.edit_message);
-        String inputText = myEditText.getText().toString();
-        Toast.makeText(MainActivity.this,inputText,Toast.LENGTH_SHORT).show();*/
-      /*  Button button = (Button) findViewById(R.id.button_message);
-        button.setOnClickListener(this);*/
-
-
+        onClickButton(R.id.first_list_view,FirstListViewActivity.class);
+        onClickButton(R.id.second_list_view_button,CustomeItemListViewActivity.class);
     }
 
-    private void setNavigationTitle(String title) {
-        CustomNavigationBar navigationBar = (CustomNavigationBar) findViewById(R.id.custom_navigation_bar);
-        navigationBar.setNavigationTitle(title);
 
-        //实现组件上的按钮的接口回调
-        navigationBar.setCallBackListener(new CustomNavigationBar.OnClickCallBackListener() {
+    private void onClickButton(int id ,final Class<?> cls){
+        Button button = (Button) findViewById(id);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void OnClickButton(View v) {
-                Toast.makeText(MainActivity.this, "回调执行的方法", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                Intent intent = new Intent( MainActivity.this,cls);
+                startActivity(intent);
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -61,49 +54,4 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-
-
-   /* @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.button_message:*/
-                /*AlertDialog.Builder alterDialog = new AlertDialog.Builder(MainActivity.this);
-                alterDialog.setTitle("提示框");
-                alterDialog.setMessage("提示内容");
-                alterDialog.setCancelable(false);
-                alterDialog.setPositiveButton("好的", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "好的", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                 alterDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                     public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
-                        }
-                 });
-                 alterDialog.show();*/
-            /*  ProgressBar myProgressBar = (ProgressBar) findViewById(R.id.my_progress_bar);
-              myProgressBar.setProgress(myProgressBar.getProgress()+10);
-
-              if (myProgressBar.getProgress() == myProgressBar.getMax()) {
-              myProgressBar.setVisibility(View.GONE);
-              myProgressBar.setProgress(0);
-              } else {
-                 myProgressBar.setVisibility(View.VISIBLE);
-              }
-*/
-            /* ProgressDialog myProgressDialog = new ProgressDialog(MainActivity.this);
-             myProgressDialog.setTitle("ProgressDialog");
-             myProgressDialog.setMessage("Loading……");
-             myProgressDialog.setCancelable(true);
-             myProgressDialog.show();*/
-
-             /*   Toast.makeText(this,"小肥猪",Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
-        }
-    }*/
 }

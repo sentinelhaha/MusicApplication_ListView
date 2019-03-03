@@ -8,11 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <com.bs.musicapplication.CustomNavigationBar
-            android:id="@+id/custom_navigation_bar"
+        <Button
+            android:id="@+id/first_list_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="系统默认表视图"/>
+
+        <Button
+            android:id="@+id/second_list_view_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义表视图"/>
     </LinearLayout>
 
 </RelativeLayout>
